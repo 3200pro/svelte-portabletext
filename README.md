@@ -20,7 +20,7 @@ Render [Portable Text](https://portabletext.org) block content with [Svelte](htt
 />
 ```
 
-This is enough to get you set-up with basic block content with formatting and text styles. When working with images, custom styles, blocks & marks, though, you'll need to customize your renderer with **components**:
+This is enough to set you up with basic block content with formatting and text styles. When working with images, custom styles, blocks & marks, though, you'll need to customize your renderer with **components**:
 
 ### Customizing rendering
 
@@ -75,7 +75,7 @@ Example components from above:
   import {session} from '$app/stores'
   import type {CustomBlockComponentProps} from '@portabletext/svelte'
 
-  // Property custom blocks receive from @portabletext/svelte when redered
+  // Property custom blocks receive from @portabletext/svelte when rendered
   export let portableText: CustomBlockComponentProps<{bold?: boolean}>
 
   $: userName = $session?.user?.name || 'person'
@@ -93,7 +93,7 @@ Example components from above:
 <script lang="ts">
   import type {MarkComponentProps} from '@portabletext/svelte'
 
-  // Property custom marks receive from @portabletext/svelte when redered
+  // Property custom marks receive from @portabletext/svelte when rendered
   export let portableText: MarkComponentProps<{
     url?: string
     newWindow?: boolean
@@ -116,7 +116,7 @@ Example components from above:
 {/if}
 ```
 
-> 📌 **To keep in mind**: Svelte's SSR mode seems to have issues with whitespace (see [#3168](https://github.com/sveltejs/svelte/issues/3168)), where it does strip unnecessary space between components. Due to this, marks (formatting, links, etc.) some times are rendered incorrectly. We're tracking this in [#1](https://github.com/portabletext/svelte-portabletext/issues/1).
+> 📌 **To keep in mind**: Svelte's SSR mode seems to have issues with whitespace (see [#3168](https://github.com/sveltejs/svelte/issues/3168)), where it does strip unnecessary space between components. Due to this, marks (formatting, links, etc.) sometimes are rendered incorrectly. We're tracking this in [#1](https://github.com/portabletext/svelte-portabletext/issues/1).
 
 ```svelte
 <!-- CustomHeading (blockStyle) -->
@@ -133,7 +133,7 @@ Example components from above:
   $: anchorId = `heading-${value._key}`
 </script>
 
-<!-- If preceded by heading, have a higher margin top -->
+<!-- If preceded by heading, have a higher margin-top -->
 <div class="relative {precededByHeading ? 'mt-10' : 'mt-4'}" id={anchorId}>
   <a href="#{anchorId}">
     <span class="sr-only">Link to this heading</span>
@@ -159,7 +159,7 @@ Finally, you can pass **`context`** to your `<PortableText>` component to have c
 - Loading in data from an external source/API
 - Running expensive calculations on your `value` only once
 
-Here's a complete example with a `footnote` annotation, where editors focus on writing its contents, and the front-end smartly position it and define its number:
+Here's a complete example with a `footnote` annotation, where editors focus on writing its contents, and the front-end smartly position it and defines its number:
 
 ```svelte
 <!-- Our page's content -->
@@ -237,7 +237,7 @@ Here's a complete example with a `footnote` annotation, where editors focus on w
 
 ## Disabling warnings / handling unknown types
 
-When the library encounters a block, mark, list or list item with a type that is not known (eg it has no corresponding component in the `components` property), it will by default print a console warning.
+When the library encounters a block, mark, list or list item with a type that is unknown (eg it has no corresponding component in the `components` property), it will by default print a console warning.
 
 To disable this behavior, you can either pass `false` to the `onMissingComponent` property, or give it a custom function you want to use to report the error. For instance:
 
@@ -284,7 +284,7 @@ For instance, to render an OpenGraph meta description for a page:
 <!-- ## TODO
 
 - [ ] If applicable, add support to `components.hardBreak`, similar to block-content-to-react
-- [ ] In example site, add examples with custom marks, block & block types
+- [ ] In the example site, add examples with custom marks, block & block types
   - Include a nested PT renderer example -->
 
 ## Credits
